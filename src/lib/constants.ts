@@ -7,6 +7,7 @@ export const NAV_DESKTOP = [
   { href: "#process", label: "Продукт" },
   { href: "#use-cases", label: "Возможности" },
   { href: "#features", label: "Безопасность" },
+  { href: "#plans", label: "Тарифы" },
   { href: "#faq", label: "FAQ" },
 ] as const;
 
@@ -14,5 +15,6 @@ export const NAV_MOBILE = [
   { href: "#use-cases", label: "Возможности" },
   { href: "#process", label: "Продукт" },
   { href: "#features", label: "Безопасность" },
+  { href: "#plans", label: "Тарифы" },
   { href: "#faq", label: "FAQ" },
 ] as const;

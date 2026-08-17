@@ -1,0 +1,147 @@
+@use "../../../../styles/breakpoints" as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--padding-2xl) var(--container-pad) var(--padding-7xl);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.subtitle {
+  max-width: none;
+}
+
+.carousel {
+  gap: var(--spacing-xl);
+}
+
+.viewport {
+  gap: var(--spacing-2xl);
+}
+
+.slide {
+  flex: 0 0 calc((100% - var(--spacing-2xl)) / 2);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  height: 100%;
+  min-height: calc(280 * var(--dpx));
+  padding: var(--padding-3xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.quote {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.name {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+}
+
+.role {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  line-height: 1.4286;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.arrow {
+  width: calc(40 * var(--dpx));
+  height: calc(40 * var(--dpx));
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.dots {
+  min-width: calc(80 * var(--dpx));
+}
+
+@include tablet {
+  .section {
+    padding-top: var(--padding-5xl);
+    padding-bottom: var(--padding-5xl);
+    gap: var(--spacing-3xl);
+  }
+
+  .header {
+    gap: var(--spacing-md);
+  }
+
+  .card {
+    padding: var(--padding-2xl);
+    min-height: calc(240 * var(--dpx));
+  }
+}
+
+@include mobile {
+  .section {
+    padding-top: var(--padding-4xl);
+    padding-bottom: var(--padding-4xl);
+    gap: var(--spacing-2xl);
+  }
+
+  .header {
+    gap: var(--spacing-xs);
+  }
+
+  .viewport {
+    gap: var(--spacing-md);
+  }
+
+  .slide {
+    flex-basis: 100%;
+  }
+
+  .card {
+    min-height: 0;
+    padding: var(--padding-md);
+    gap: var(--spacing-md);
+  }
+
+  .quote {
+    font-size: var(--font-size-sm);
+    letter-spacing: 0;
+  }
+
+  .arrow {
+    width: calc(36 * var(--dpx));
+    height: calc(36 * var(--dpx));
+  }
+}

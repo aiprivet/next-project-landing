@@ -1,0 +1,138 @@
+@use "../../../../styles/breakpoints" as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding: var(--padding-2xl) var(--container-pad) var(--padding-7xl);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: var(--spacing-8xl);
+  align-items: start;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.subtitle {
+  max-width: none;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactLabel {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  line-height: 1.4286;
+}
+
+.contactLink {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  text-decoration: underline;
+}
+
+.panel {
+  min-height: calc(420 * var(--dpx));
+  padding: var(--padding-3xl);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  line-height: 1.4286;
+  cursor: pointer;
+}
+
+.checkbox {
+  flex: 0 0 auto;
+  width: calc(18 * var(--dpx));
+  height: calc(18 * var(--dpx));
+  margin: calc(2 * var(--dpx)) 0 0;
+  accent-color: var(--color-black);
+}
+
+.submit,
+.reset {
+  width: 100%;
+  margin-top: var(--spacing-xs);
+}
+
+.reset {
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  min-height: calc(360 * var(--dpx));
+}
+
+@include tablet {
+  .section {
+    padding-top: var(--padding-5xl);
+    padding-bottom: var(--padding-5xl);
+    gap: var(--spacing-3xl);
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3xl);
+  }
+
+  .panel {
+    padding: var(--padding-2xl);
+    min-height: 0;
+  }
+}
+
+@include mobile {
+  .section {
+    padding-top: var(--padding-4xl);
+    padding-bottom: var(--padding-4xl);
+    gap: var(--spacing-2xl);
+  }
+
+  .panel {
+    padding: var(--padding-md);
+  }
+
+  .success {
+    min-height: calc(240 * var(--dpx));
+  }
+}
