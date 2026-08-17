@@ -102,8 +102,22 @@ $spacing-sizes: xxs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl, 8xl;
 
   --header-offset: 84px;
   --container-pad: var(--spacing-3xl);
-  --hero-inset: var(--spacing-sm);
-  --header-inset: calc(var(--hero-inset) + 4px);
+  --hero-inset: 12px;
+  --header-inset: 16px;
+}
+
+@include narrow {
+  :root {
+    --hero-inset: var(--spacing-md);
+    --header-inset: calc(var(--hero-inset) + 4px);
+  }
+}
+
+@media (min-width: $bp-large) {
+  :root {
+    --hero-inset: calc(12 * var(--dpx));
+    --header-inset: calc(16 * var(--dpx));
+  }
 }
 
 @include tablet {
@@ -111,8 +125,6 @@ $spacing-sizes: xxs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl, 8xl;
     --dpx: calc(1vw / 8.1);
     --container-pad: var(--spacing-lg);
     --header-offset: 76px;
-    --hero-inset: var(--spacing-md);
-    --header-inset: calc(var(--hero-inset) + 4px);
     --h1-font-size: calc(56 * var(--dpx));
   }
 }

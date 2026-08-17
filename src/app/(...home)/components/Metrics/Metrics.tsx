@@ -16,6 +16,7 @@ export function Metrics() {
           <Reveal key={item.label} delay={index * 0.06} className={styles.item}>
             <Counter
               value={item.value}
+              from={"from" in item ? item.from : undefined}
               suffix={item.suffix}
               className={styles.value}
             />

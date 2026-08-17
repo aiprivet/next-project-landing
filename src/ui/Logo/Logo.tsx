@@ -12,7 +12,7 @@ export function Logo({ className, href = "/" }: LogoProps) {
   const mark = (
     <Image
       src="/images/logo.svg"
-      alt="Снэпбилд"
+      alt="Cнэпбилд"
       width={153}
       height={22}
       className={styles.image}
@@ -25,7 +25,7 @@ export function Logo({ className, href = "/" }: LogoProps) {
   }
 
   return (
-    <Link href={href} className={cx(styles.root, className)} aria-label="Снэпбилд">
+    <Link href={href} className={cx(styles.root, className)} aria-label="Cнэпбилд">
       {mark}
     </Link>
   );

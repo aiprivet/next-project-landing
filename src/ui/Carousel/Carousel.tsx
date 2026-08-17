@@ -24,8 +24,11 @@ type CarouselContextValue = {
   viewportId: string;
   index: number;
   count: number;
+  pageCount: number;
+  pageIndex: number;
   labels: string[];
   syncFromDom: () => void;
+  syncIndex: () => void;
   goTo: (index: number) => void;
   goPrev: () => void;
   goNext: () => void;
@@ -39,8 +42,14 @@ function useCarousel() {
   return ctx;
 }
 
+const MOBILE_MQ = "(max-width: 767px)";
+
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getSlidesPerView() {
+  return window.matchMedia(MOBILE_MQ).matches ? 1 : 2;
 }
 
 function Root({
@@ -52,10 +61,14 @@ function Root({
   const viewportId = useId();
   const [index, setIndex] = useState(0);
   const [count, setCount] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(1);
   const [labels, setLabels] = useState<string[]>([]);
   const indexRef = useRef(0);
 
-  const syncFromDom = useCallback(() => {
+  const pageCount = Math.max(1, count - slidesPerView + 1);
+  const pageIndex = Math.min(index, pageCount - 1);
+
+  const syncMeta = useCallback(() => {
     const node = viewportRef.current;
     if (!node) return;
     const slides = [...node.querySelectorAll<HTMLElement>("[data-carousel-slide]")];
@@ -71,6 +84,18 @@ function Root({
         : nextLabels,
     );
 
+    if (slides.length) {
+      const nextSlidesPerView = getSlidesPerView();
+      setSlidesPerView((current) =>
+        current === nextSlidesPerView ? current : nextSlidesPerView,
+      );
+    }
+  }, []);
+
+  const syncIndex = useCallback(() => {
+    const node = viewportRef.current;
+    if (!node) return;
+    const slides = node.querySelectorAll<HTMLElement>("[data-carousel-slide]");
     if (!slides.length) {
       indexRef.current = 0;
       setIndex((current) => (current === 0 ? current : 0));
@@ -90,6 +115,11 @@ function Root({
     indexRef.current = closest;
     setIndex((current) => (current === closest ? current : closest));
   }, []);
+
+  const syncFromDom = useCallback(() => {
+    syncMeta();
+    syncIndex();
+  }, [syncIndex, syncMeta]);
 
   const goTo = useCallback((next: number) => {
     const node = viewportRef.current;
@@ -115,13 +145,28 @@ function Root({
       viewportId,
       index,
       count,
+      pageCount,
+      pageIndex,
       labels,
       syncFromDom,
+      syncIndex,
       goTo,
       goPrev,
       goNext,
     }),
-    [count, goNext, goPrev, goTo, index, labels, syncFromDom, viewportId],
+    [
+      count,
+      goNext,
+      goPrev,
+      goTo,
+      index,
+      labels,
+      pageCount,
+      pageIndex,
+      syncFromDom,
+      syncIndex,
+      viewportId,
+    ],
   );
 
   return (
@@ -143,21 +188,46 @@ function Viewport({
   children,
   ...props
 }: HTMLAttributes<HTMLDivElement> & { children: ReactNode }) {
-  const { viewportRef, viewportId, count, syncFromDom, goTo, goPrev, goNext } =
+  const { viewportRef, viewportId, pageCount, syncFromDom, syncIndex, goTo, goPrev, goNext } =
     useCarousel();
 
   useEffect(() => {
     const node = viewportRef.current;
     if (!node) return;
     syncFromDom();
-    node.addEventListener("scroll", syncFromDom, { passive: true });
-    const observer = new MutationObserver(syncFromDom);
-    observer.observe(node, { childList: true, subtree: true });
-    return () => {
-      node.removeEventListener("scroll", syncFromDom);
-      observer.disconnect();
+
+    const supportsScrollEnd = "onscrollend" in node;
+    let scrollEndTimer: ReturnType<typeof setTimeout> | undefined;
+
+    const onScrollEnd = () => {
+      syncIndex();
     };
-  }, [syncFromDom, viewportRef]);
+
+    const onScroll = () => {
+      if (supportsScrollEnd) return;
+      clearTimeout(scrollEndTimer);
+      scrollEndTimer = setTimeout(onScrollEnd, 100);
+    };
+
+    node.addEventListener("scrollend", onScrollEnd);
+    node.addEventListener("scroll", onScroll, { passive: true });
+
+    const mutationObserver = new MutationObserver(syncFromDom);
+    mutationObserver.observe(node, { childList: true, subtree: true });
+    const resizeObserver = new ResizeObserver(syncFromDom);
+    resizeObserver.observe(node);
+    const mobileQuery = window.matchMedia(MOBILE_MQ);
+    mobileQuery.addEventListener("change", syncFromDom);
+
+    return () => {
+      node.removeEventListener("scrollend", onScrollEnd);
+      node.removeEventListener("scroll", onScroll);
+      clearTimeout(scrollEndTimer);
+      mutationObserver.disconnect();
+      resizeObserver.disconnect();
+      mobileQuery.removeEventListener("change", syncFromDom);
+    };
+  }, [syncFromDom, syncIndex, viewportRef]);
 
   function onPointerDown(event: PointerEvent<HTMLDivElement>) {
     const node = viewportRef.current;
@@ -198,7 +268,7 @@ function Viewport({
     }
     if (event.key === "End") {
       event.preventDefault();
-      goTo(count - 1);
+      goTo(pageCount - 1);
     }
   }
 
@@ -265,7 +335,7 @@ function Next({
   children,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement>) {
-  const { index, count, goNext, viewportId } = useCarousel();
+  const { index, count, pageCount, goNext, viewportId } = useCarousel();
 
   return (
     <button
@@ -274,7 +344,7 @@ function Next({
       {...props}
       className={cx(styles.control, className)}
       aria-controls={viewportId}
-      disabled={count === 0 || index >= count - 1}
+      disabled={count === 0 || index >= pageCount - 1}
       onClick={goNext}
     >
       {children}
@@ -283,17 +353,17 @@ function Next({
 }
 
 function Dots({ className }: { className?: string }) {
-  const { count, index, labels, goTo } = useCarousel();
+  const { pageCount, pageIndex, labels, goTo } = useCarousel();
 
   return (
     <div className={cx(styles.dots, className)}>
-      {Array.from({ length: count }, (_, i) => (
+      {Array.from({ length: pageCount }, (_, i) => (
         <button
           key={i}
           type="button"
-          className={cx(styles.dot, i === index && styles.dotActive)}
+          className={cx(styles.dot, i === pageIndex && styles.dotActive)}
           aria-label={labels[i] ?? `Slide ${i + 1}`}
-          aria-current={i === index ? "true" : undefined}
+          aria-current={i === pageIndex ? "true" : undefined}
           onClick={() => goTo(i)}
         />
       ))}

@@ -61,7 +61,7 @@ export function Hero() {
           >
             <Image
               src={hero.image}
-              alt="Интерфейс Снэпбилд"
+              alt="Интерфейс Cнэпбилд"
               width={2632}
               height={1386}
               className={styles.shot}

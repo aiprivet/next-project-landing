@@ -101,25 +101,6 @@ export function Contact() {
         <Reveal className={styles.intro}>
           <Heading order={2}>{contact.title}</Heading>
           <Text className={styles.subtitle}>{contact.subtitle}</Text>
-          <ul className={styles.contacts}>
-            <li>
-              <span className={styles.contactLabel}>{contact.emailLabel}</span>
-              <a href={`mailto:${EMAIL}`} className={styles.contactLink}>
-                {EMAIL}
-              </a>
-            </li>
-            <li>
-              <span className={styles.contactLabel}>{contact.telegramLabel}</span>
-              <a
-                href={TELEGRAM_URL}
-                className={styles.contactLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                t.me/snapbuild
-              </a>
-            </li>
-          </ul>
         </Reveal>
 
         <div className={styles.panel}>

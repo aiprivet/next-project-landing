@@ -1,6 +1,8 @@
 $bp-mobile: 767px;
+$bp-narrow: 970px;
 $bp-tablet: 1023px;
 $bp-desktop: 1024px;
+$bp-large: 1440px;
 $bp-wide: 2560px;
 
 @mixin tablet {
@@ -15,8 +17,20 @@ $bp-wide: 2560px;
   }
 }
 
+@mixin narrow {
+  @media (max-width: $bp-narrow) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $bp-large) {
     @content;
   }
 }

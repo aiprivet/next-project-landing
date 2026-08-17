@@ -1,7 +1,7 @@
 export const APP_URL = "#";
-export const TELEGRAM_URL = "https://t.me/snapbuild";
-export const EMAIL = "hey@snapbuild.ru";
-export const COOKIE_KEY = "snapbuild-cookie-accepted";
+export const TELEGRAM_URL = "https://t.me/#";
+export const EMAIL = "hey@snаpbuild.ru";
+export const COOKIE_KEY = "snаpbuild-cookie-accepted";
 
 export const NAV_DESKTOP = [
   { href: "#process", label: "Продукт" },

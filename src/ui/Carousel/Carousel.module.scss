@@ -64,8 +64,16 @@
   border-radius: 50%;
   background: var(--color-border-strong);
   cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .dotActive {
   background: var(--color-text);
+  transform: scale(1.25);
 }
