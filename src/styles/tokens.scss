@@ -1,0 +1,137 @@
+@use "./breakpoints" as *;
+
+
+$spacing-sizes: xxs, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl, 8xl;
+
+:root {
+  --dpx: calc(1vw / 14.4);
+
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-bg: #f5f5f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fafafa;
+  --color-surface-subtle: #f5f5f7;
+  --color-text: #000000;
+  --color-text-secondary: #5a5b62;
+  --color-text-muted: rgba(0, 0, 0, 0.6);
+  --color-text-faint: oklch(0.551 0.027 264.364);
+  --color-border: rgba(0, 0, 0, 0.06);
+  --color-border-strong: rgba(0, 0, 0, 0.1);
+  --color-overlay: rgba(0, 0, 0, 0.045);
+
+  --gradient-brand: linear-gradient(90deg, #ff6d3c, #ff6ba7 46%, #bb6dff);
+  --gradient-brand-diag: linear-gradient(91.76deg, #ff6d3d 1.5%, #ff6ca7 56.4%, #bb6dff 103.9%);
+  --gradient-brand-text: linear-gradient(55.14deg, #ff6d3d 0%, #ff6ca7 46.15%, #bb6dff 94.23%);
+  --gradient-hero: linear-gradient(
+    157deg,
+    #ffffff 17.71%,
+    #ffcdb3 43.16%,
+    #ffa4b6 58.2%,
+    #ffb2e9 73.32%,
+    #d4d6ff 90.8%,
+    #ffffff 103.16%
+  );
+  --gradient-cta: linear-gradient(
+    157deg,
+    #ffffff 11%,
+    #ffcdb3 33%,
+    #ffa4b6 53%,
+    #ffb2e9 67%,
+    #d4d6ff 90%,
+    #d4d6ff 97%,
+    #ffffff 100%
+  );
+  --gradient-card-border: linear-gradient(135deg, #ffcdb3 0%, #ffa4b6 40%, #ffb2e9 70%, #d4d6ff 100%);
+  --gradient-compare: linear-gradient(135deg, #ff6d3d 0%, #ff6ca7 52%, #bb6dff 100%);
+
+  --font-sans: var(--font-tt-commons), "TT Commons Pro", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --spacing-xxs: calc(4 * var(--dpx));
+  --spacing-xs: calc(8 * var(--dpx));
+  --spacing-sm: calc(12 * var(--dpx));
+  --spacing-md: calc(16 * var(--dpx));
+  --spacing-lg: calc(20 * var(--dpx));
+  --spacing-xl: calc(24 * var(--dpx));
+  --spacing-2xl: calc(32 * var(--dpx));
+  --spacing-3xl: calc(40 * var(--dpx));
+  --spacing-4xl: calc(48 * var(--dpx));
+  --spacing-5xl: calc(60 * var(--dpx));
+  --spacing-6xl: calc(64 * var(--dpx));
+  --spacing-7xl: calc(96 * var(--dpx));
+  --spacing-8xl: calc(128 * var(--dpx));
+
+  @each $size in $spacing-sizes {
+    --padding-#{$size}: var(--spacing-#{$size});
+    --margin-#{$size}: var(--spacing-#{$size});
+  }
+
+  --font-size-xs: calc(14 * var(--dpx));
+  --font-size-sm: calc(16 * var(--dpx));
+  --font-size-md: calc(18 * var(--dpx));
+  --font-size-lg: calc(20 * var(--dpx));
+  --font-size-xl: calc(24 * var(--dpx));
+
+  --h1-font-size: calc(76 * var(--dpx));
+  --h2-font-size: calc(52 * var(--dpx));
+  --h3-font-size: var(--font-size-xl);
+
+  --radius-xs: calc(12 * var(--dpx));
+  --radius-sm: calc(16 * var(--dpx));
+  --radius-md: calc(18 * var(--dpx));
+  --radius-lg: calc(20 * var(--dpx));
+  --radius-xl: calc(32 * var(--dpx));
+
+  --letter-spacing-xs: calc(-0.5 * var(--dpx));
+  --letter-spacing-sm: calc(-1 * var(--dpx));
+
+  --shadow-header: 0 6px 22px rgba(29, 22, 40, 0.055);
+  --shadow-cookie: 0 12px 40px rgba(29, 22, 40, 0.12);
+
+  --z-header: 50;
+  --z-menu: 51;
+  --z-cookie: 80;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 300ms;
+
+  --header-offset: 84px;
+  --container-pad: var(--spacing-3xl);
+  --hero-inset: var(--spacing-sm);
+  --header-inset: calc(var(--hero-inset) + 4px);
+}
+
+@include tablet {
+  :root {
+    --dpx: calc(1vw / 8.1);
+    --container-pad: var(--spacing-lg);
+    --header-offset: 76px;
+    --hero-inset: var(--spacing-md);
+    --header-inset: calc(var(--hero-inset) + 4px);
+    --h1-font-size: calc(56 * var(--dpx));
+  }
+}
+
+@include mobile {
+  :root {
+    --dpx: calc(1vw / 3.75);
+    --container-pad: var(--spacing-md);
+    --header-offset: 72px;
+    --hero-inset: 0px;
+    --header-inset: 12px;
+    --h1-font-size: calc(34 * var(--dpx));
+    --h2-font-size: calc(32 * var(--dpx));
+    --h3-font-size: var(--font-size-sm);
+  }
+}
+
+@include wide {
+  :root {
+    --dpx: 1.7777777778px;
+  }
+}
