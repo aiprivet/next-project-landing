@@ -1,0 +1,125 @@
+@use "../../../../styles/breakpoints" as *;
+
+.section {
+  padding: var(--hero-inset);
+}
+
+.card {
+  border-radius: var(--radius-lg);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2xl);
+  padding: calc(108 * var(--dpx)) var(--padding-3xl) 0;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-top: var(--margin-md);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-height: calc(260 * var(--dpx));
+}
+
+.title {
+  max-width: calc(984 * var(--dpx));
+}
+
+.subtitle {
+  max-width: calc(984 * var(--dpx));
+  font-weight: var(--font-weight-medium);
+}
+
+.cta {
+  font-size: var(--font-size-xs);
+  padding: calc(14 * var(--dpx)) calc(22 * var(--dpx));
+  border-radius: var(--radius-xs);
+}
+
+.media {
+  width: 100%;
+  margin-top: var(--margin-lg);
+  aspect-ratio: 2632 / 1386;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+@include tablet {
+  .card {
+    border-radius: var(--radius-md);
+  }
+
+  .inner {
+    gap: var(--spacing-2xl);
+    padding: calc(80 * var(--dpx)) var(--padding-xl) 0;
+  }
+
+  .heading {
+    min-height: 0;
+  }
+
+  .media {
+    width: calc(770 * var(--dpx));
+    margin-top: 0;
+  }
+}
+
+@include mobile {
+  .section {
+    padding: 0 0 var(--padding-md);
+  }
+
+  .card {
+    border-radius: 0;
+  }
+
+  .inner {
+    padding: calc(88 * var(--dpx)) 0 0;
+    gap: var(--spacing-2xl);
+  }
+
+  .intro {
+    padding-inline: var(--padding-md);
+    gap: var(--spacing-md);
+  }
+
+  .subtitle {
+    max-width: none;
+    font-size: var(--font-size-xs);
+    line-height: calc(20 / 14);
+  }
+
+  .heading {
+    min-height: 0;
+  }
+
+  .media {
+    width: calc(100% - 32 * var(--dpx));
+    margin-inline: auto;
+    margin-top: 0;
+  }
+
+  .shot {
+    border-radius: 6px 6px 0 0;
+  }
+}

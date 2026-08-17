@@ -1,0 +1,292 @@
+@use "../../../../styles/breakpoints" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-header);
+  pointer-events: none;
+}
+
+.bar {
+  pointer-events: auto;
+  position: relative;
+  z-index: calc(var(--z-menu) + 1);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  max-width: 940px;
+  width: calc(100% - 2 * var(--header-inset));
+  min-height: 52px;
+  margin: var(--header-inset) auto 0;
+  padding: 7px 9px 7px 14px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform-origin: top center;
+  transition:
+    margin 280ms var(--ease-soft),
+    padding 280ms var(--ease-soft),
+    border-color 300ms ease,
+    border-radius 280ms var(--ease-soft),
+    background-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 280ms var(--ease-soft);
+}
+
+.scrolled .bar {
+  border-color: var(--color-overlay);
+  box-shadow: var(--shadow-header);
+}
+
+.menuOpen .bar {
+  box-shadow: none;
+}
+
+.logo {
+  justify-self: start;
+  width: auto;
+  height: 20px;
+  aspect-ratio: auto;
+}
+
+.logo img,
+.logo :global(img) {
+  width: auto;
+  height: 20px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 0;
+}
+
+.link {
+  padding: 8px 10px;
+  border-radius: 9px;
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  background: var(--color-overlay);
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+}
+
+.cta {
+  min-height: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 12px;
+  transition:
+    opacity 280ms var(--ease-soft),
+    visibility 280ms var(--ease-soft),
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    border-radius 280ms var(--ease-soft),
+    transform var(--duration-fast) ease;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  --btn-bg: var(--color-black);
+  background: var(--color-black);
+}
+
+.menuOpen .cta {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: calc(48 * var(--dpx));
+  height: calc(48 * var(--dpx));
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burgerIcon {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: calc(20 * var(--dpx));
+  height: calc(13.333 * var(--dpx));
+  border-top: 2px solid var(--color-black);
+  border-bottom: 2px solid var(--color-black);
+  transition: border-color 267ms cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.burgerIcon::before,
+.burgerIcon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--color-black);
+  transform: translateY(-50%);
+  transition:
+    transform 267ms cubic-bezier(0.55, 0, 0.1, 1),
+    opacity 267ms cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.burgerIcon::after {
+  opacity: 0;
+}
+
+.burgerOpen .burgerIcon {
+  border-color: transparent;
+}
+
+.burgerOpen .burgerIcon::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.burgerOpen .burgerIcon::after {
+  opacity: 1;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.menu {
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  background: var(--color-white);
+  padding: calc(104 * var(--dpx)) var(--padding-lg) var(--padding-lg);
+}
+
+.menuLink {
+  padding: var(--padding-lg) 0;
+  border-bottom: calc(1 * var(--dpx)) solid var(--color-border-strong);
+  border-radius: 0;
+  color: var(--color-text);
+  font-size: calc(32 * var(--dpx));
+  font-weight: var(--font-weight-medium);
+  line-height: calc(40 / 32);
+  text-decoration: none;
+}
+
+.menuLink:hover,
+.menuLink:focus-visible {
+  background: transparent;
+}
+
+.menuCtaWrap {
+  width: 100%;
+  margin-top: auto;
+}
+
+.menuCta {
+  width: 100%;
+  min-height: calc(64 * var(--dpx));
+  padding: calc(18 * var(--dpx)) var(--padding-xl);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-xs);
+}
+
+.menuCta:hover,
+.menuCta:focus-visible {
+  --btn-bg: var(--color-black);
+  background: var(--color-black);
+}
+
+@include tablet {
+  .bar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .menu {
+    display: flex;
+  }
+}
+
+@include mobile {
+  .bar {
+    min-height: 50px;
+  }
+
+  .logo,
+  .logo img,
+  .logo :global(img) {
+    height: 18px;
+  }
+
+  .cta {
+    min-height: 36px;
+    padding: 8px 14px;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 11px;
+  }
+
+  .burger {
+    width: calc(36 * var(--dpx));
+    height: calc(36 * var(--dpx));
+    border-radius: 12px;
+  }
+
+  .burgerIcon {
+    width: calc(15 * var(--dpx));
+    height: calc(10 * var(--dpx));
+    border-top-width: 1.5px;
+    border-bottom-width: 1.5px;
+  }
+
+  .burgerIcon::before,
+  .burgerIcon::after {
+    height: 1.5px;
+  }
+
+  .menu {
+    padding: calc(92 * var(--dpx)) var(--padding-md) var(--padding-md);
+  }
+
+  .menuLink {
+    padding: calc(18 * var(--dpx)) 0;
+    border-bottom-width: calc(1 * var(--dpx));
+    font-size: calc(28 * var(--dpx));
+    line-height: calc(36 / 28);
+  }
+
+  .menuCta {
+    min-height: calc(60 * var(--dpx));
+    padding: var(--padding-md) var(--padding-lg);
+    font-size: var(--font-size-md);
+  }
+}

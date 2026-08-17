@@ -1,0 +1,159 @@
+@use "../../../../styles/breakpoints" as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: calc(56 * var(--dpx));
+  padding: var(--padding-2xl) 0 var(--padding-lg);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--spacing-xs);
+  padding-inline: var(--container-pad);
+}
+
+.scroller {
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller:active {
+  cursor: grabbing;
+}
+
+.track {
+  --col: calc(320 * var(--dpx));
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--col);
+  width: max-content;
+  padding-inline: var(--container-pad);
+}
+
+.track::before,
+.track::after {
+  content: "";
+  position: absolute;
+  top: calc(16 * var(--dpx));
+  left: var(--container-pad);
+  height: 1px;
+}
+
+.track::before {
+  right: var(--container-pad);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.track::after {
+  width: calc(var(--progress, 0) * var(--col) + 4px);
+  background: #ff68a4;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-4xl);
+}
+
+.dot {
+  position: relative;
+  flex: 0 0 auto;
+  width: calc(32 * var(--dpx));
+  height: calc(32 * var(--dpx));
+  margin-left: calc(-12 * var(--dpx));
+  border-radius: 50%;
+  background: var(--color-bg);
+}
+
+.halo,
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.halo {
+  width: calc(20 * var(--dpx));
+  height: calc(20 * var(--dpx));
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0.12;
+}
+
+.core {
+  width: calc(6 * var(--dpx));
+  height: calc(6 * var(--dpx));
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.reached .halo {
+  background: var(--gradient-brand-diag);
+  opacity: 0.18;
+}
+
+.reached .core {
+  background: var(--gradient-brand-diag);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(117 * var(--dpx));
+  padding-right: var(--padding-6xl);
+}
+
+.name {
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.desc {
+  margin: var(--margin-xs) 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  line-height: 1.4286;
+}
+
+.date {
+  margin: auto 0 0;
+  padding-top: var(--padding-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+}
+
+@include mobile {
+  .header {
+    gap: var(--spacing-xs);
+  }
+
+  .track {
+    --col: calc(260 * var(--dpx));
+  }
+
+  .item {
+    gap: var(--spacing-xl);
+  }
+
+  .body {
+    padding-right: var(--padding-xl);
+  }
+}

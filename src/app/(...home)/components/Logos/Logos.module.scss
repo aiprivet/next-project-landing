@@ -1,0 +1,163 @@
+@use "../../../../styles/breakpoints" as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  margin-top: var(--margin-2xl);
+  overflow: hidden;
+}
+
+.eyebrow {
+  order: 2;
+  margin: 0;
+  padding-inline: var(--container-pad);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: calc(107 * var(--dpx));
+  padding-inline: var(--container-pad);
+}
+
+.content,
+.duplicate {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: calc(107 * var(--dpx));
+}
+
+.duplicate {
+  display: none;
+}
+
+.item {
+  flex: 0 0 auto;
+  height: calc(37 * var(--dpx));
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.item img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+}
+
+.revealed .item {
+  animation: logo-reveal 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--logo-index, 0) * 90ms);
+}
+
+@include tablet {
+  .track {
+    width: 100%;
+    gap: 0;
+  }
+
+  .content {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .item {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .item img {
+    max-width: 100%;
+    width: auto;
+    height: 100%;
+  }
+}
+
+@include mobile {
+  .section {
+    margin-top: var(--margin-md);
+    gap: var(--spacing-md);
+  }
+
+  .eyebrow {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0;
+  }
+
+  .item {
+    flex: 0 0 auto;
+    min-width: unset;
+    opacity: 1;
+    transform: none;
+    animation: none;
+    height: calc(28 * var(--dpx));
+    margin-inline: var(--margin-lg);
+  }
+
+  .item img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+  }
+
+  .track {
+    width: max-content;
+    gap: 0;
+    padding: 0;
+    justify-content: flex-start;
+    animation: marquee 28s linear infinite;
+  }
+
+  .content,
+  .duplicate {
+    display: flex;
+    width: auto;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0;
+  }
+}
+
+@keyframes logo-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .revealed .item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .track {
+    animation: none;
+  }
+}
