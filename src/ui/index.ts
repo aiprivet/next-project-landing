@@ -1,11 +1,16 @@
 export { Accordion } from "./Accordion/Accordion";
+export { Badge } from "./Badge/Badge";
 export { Button } from "./Button/Button";
 export { Card } from "./Card/Card";
+export { Carousel } from "./Carousel/Carousel";
 export { Container } from "./Container/Container";
+export { Counter } from "./Counter/Counter";
+export { Field } from "./Field/Field";
 export { GradientBox } from "./GradientBox/GradientBox";
 export { Heading } from "./Heading/Heading";
 export { Logo } from "./Logo/Logo";
 export { Reveal } from "./Reveal/Reveal";
 export { Section } from "./Section/Section";
+export { Switch } from "./Switch/Switch";
 export { Tabs } from "./Tabs/Tabs";
 export { Text } from "./Text/Text";
