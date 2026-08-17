@@ -5,13 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "preview": "npx --yes serve out",
     "lint": "eslint"
   },
   "dependencies": {
+    "motion": "^13.1.0",
     "next": "16.3.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sass": "^1.102.0"
   },
   "devDependencies": {
     "@types/node": "^20",
