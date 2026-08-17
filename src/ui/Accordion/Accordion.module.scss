@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.control {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.controlContent {
+  flex: 1;
+}
+
+.icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  color: var(--color-text);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.iconOpen {
+  transform: rotate(45deg);
+}
+
+.panel {
+  overflow: hidden;
+}
+
+.panelInner {
+  padding-top: var(--padding-sm);
+}

@@ -1,0 +1,38 @@
+@use "../../styles/breakpoints" as *;
+
+.root {
+  background: var(--color-bg);
+}
+
+.transparent {
+  background: transparent;
+}
+
+.none {
+  padding: 0;
+}
+
+.sm {
+  padding-block: var(--padding-2xl);
+}
+
+.md {
+  padding-block: var(--padding-4xl);
+}
+
+.lg {
+  padding-block: var(--padding-7xl);
+  padding-inline: var(--container-pad);
+}
+
+@include tablet {
+  .lg {
+    padding-block: var(--padding-5xl);
+  }
+}
+
+@include mobile {
+  .lg {
+    padding-block: var(--padding-4xl);
+  }
+}

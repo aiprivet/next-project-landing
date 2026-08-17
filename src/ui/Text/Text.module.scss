@@ -1,0 +1,43 @@
+.root {
+  margin: 0;
+  font-weight: var(--font-weight-regular);
+}
+
+.sm {
+  font-size: var(--font-size-xs);
+  line-height: 1.4286;
+}
+
+.md {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.lg {
+  font-size: var(--font-size-md);
+  line-height: calc(24 / 18);
+}
+
+.primary {
+  color: var(--color-text);
+}
+
+.secondary {
+  color: var(--color-text-secondary);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}

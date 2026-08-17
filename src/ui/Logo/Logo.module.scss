@@ -1,0 +1,15 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  width: calc(153 * var(--dpx));
+  aspect-ratio: 153 / 22;
+  color: inherit;
+  text-decoration: none;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,124 @@
+@use "../../styles/breakpoints" as *;
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.filled {
+  --btn-bg: var(--color-black);
+  --btn-fg: var(--color-white);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+
+.filled:hover {
+  --btn-bg: #242424;
+}
+
+.white {
+  --btn-bg: var(--color-white);
+  --btn-fg: var(--color-black);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-text);
+}
+
+.sizeSm {
+  min-height: calc(36 * var(--dpx));
+  padding: var(--padding-xs) calc(14 * var(--dpx));
+  font-size: calc(13 * var(--dpx));
+}
+
+.sizeMd {
+  min-height: calc(44 * var(--dpx));
+  padding: var(--padding-sm) var(--padding-lg);
+  font-size: var(--font-size-xs);
+}
+
+.sizeLg {
+  min-height: calc(52 * var(--dpx));
+  padding: calc(14 * var(--dpx)) calc(22 * var(--dpx));
+  font-size: var(--font-size-sm);
+}
+
+.radiusMd {
+  border-radius: var(--radius-xs);
+}
+
+.radiusLg {
+  border-radius: 16px;
+}
+
+.radiusPill {
+  border-radius: var(--radius-xs);
+}
+
+.gradient {
+  background-image: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmerBand {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgb(255 255 255 / 0%) 0%,
+    rgb(255 255 255 / 0%) 37%,
+    var(--btn-bg) 50%,
+    rgb(255 255 255 / 0%) 63%,
+    rgb(255 255 255 / 0%) 100%
+  );
+  background-size: 400% 100%;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+}
+
+.shimmer:hover .shimmerBand,
+.shimmer:focus-visible .shimmerBand {
+  animation: btn-shimmer 0.75s linear;
+}
+
+@keyframes btn-shimmer {
+  from {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+@include mobile {
+  .sizeMd {
+    min-height: calc(40 * var(--dpx));
+    padding: calc(10 * var(--dpx)) calc(14 * var(--dpx));
+    font-size: calc(13 * var(--dpx));
+  }
+}

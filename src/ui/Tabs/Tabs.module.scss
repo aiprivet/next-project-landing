@@ -1,0 +1,30 @@
+.list {
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--spacing-xs);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(10 * var(--dpx)) calc(10 * var(--dpx));
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-subtle);
+  color: var(--color-text);
+  font-family: inherit;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.tabActive {
+  background: var(--color-black);
+  color: var(--color-white);
+}

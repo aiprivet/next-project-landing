@@ -1,0 +1,22 @@
+.root {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.sm {
+  max-width: 960px;
+}
+
+.md {
+  max-width: 1120px;
+}
+
+.lg {
+  max-width: none;
+}
+
+.full {
+  max-width: none;
+  padding-inline: 0;
+}

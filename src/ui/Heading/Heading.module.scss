@@ -1,0 +1,62 @@
+@use "../../styles/breakpoints" as *;
+
+.root {
+  margin: 0;
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.h1 {
+  font-size: var(--h1-font-size);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.h2 {
+  font-size: var(--h2-font-size);
+  line-height: 1.2308;
+  letter-spacing: var(--letter-spacing-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.h3 {
+  font-size: var(--h3-font-size);
+  line-height: 1.3334;
+  letter-spacing: var(--letter-spacing-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+@include tablet {
+  .h1 {
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+}
+
+@include mobile {
+  .h1 {
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .h2 {
+    line-height: 1.25;
+  }
+
+  .h3 {
+    line-height: 1.375;
+    letter-spacing: 0;
+  }
+}
