@@ -20,7 +20,7 @@ https://aiprivet.github.io/next-project-landing/
 
 ```bash
 # Клонировать репозиторий
-git clone <url-репозитория>
+git clone https://github.com/aiprivet/next-project-landing
 cd next-project-landing
 
 # Установить зависимости
