@@ -11,8 +11,8 @@ export const hero = {
 export const logos = {
   eyebrow: "С платформой работают команды, для которых бренд — закон",
   items: [
-    { src: `${BASE_PATH}/images/logos/partner-1.svg`, alt: "Яндекс" },
-    { src: `${BASE_PATH}/images/logos/partner-2.svg`, alt: "Т-Банк" },
+    { src: `${BASE_PATH}/images/logos/partner-1.svg`, alt: "Ozon" },
+    { src: `${BASE_PATH}/images/logos/partner-2.svg`, alt: "t2" },
     { src: `${BASE_PATH}/images/logos/avito.svg`, alt: "Авито" },
     { src: `${BASE_PATH}/images/logos/cian.svg`, alt: "Циан" },
     { src: `${BASE_PATH}/images/logos/lenta.svg`, alt: "Лента" },

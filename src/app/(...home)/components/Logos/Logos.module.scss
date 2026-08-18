@@ -41,16 +41,49 @@
 }
 
 .item {
+  --h: calc(37 * var(--dpx));
+  --k: 1;
+  display: flex;
   flex: 0 0 auto;
-  height: calc(37 * var(--dpx));
+  align-items: flex-end;
+  justify-content: center;
+  height: calc(var(--h) * var(--k));
   opacity: 0;
   transform: translateY(12px);
 }
 
-.item img {
-  width: auto;
+.item:nth-child(1) {
+  --k: 0.5946;
+  --w: 100.85;
+}
+
+.item:nth-child(2) {
+  --k: 0.8649;
+  --w: 43.44;
+}
+
+.item:nth-child(3) {
+  --k: 0.7005;
+  --w: 102.19;
+}
+
+.item:nth-child(4) {
+  --k: 1.1116;
+  --w: 113.58;
+}
+
+.item:nth-child(5) {
+  --k: 0.6511;
+  --w: 106.09;
+}
+
+.item img,
+.item :global(img) {
+  display: block;
+  width: calc(var(--w) / 37 * var(--h));
+  max-width: none;
   height: 100%;
-  object-fit: contain;
+  object-fit: fill;
   filter: grayscale(1);
 }
 
@@ -70,17 +103,6 @@
     justify-content: space-between;
     gap: 0;
   }
-
-  .item {
-    flex: 0 1 auto;
-    min-width: 0;
-  }
-
-  .item img {
-    max-width: 100%;
-    width: auto;
-    height: 100%;
-  }
 }
 
 @include mobile {
@@ -95,20 +117,13 @@
   }
 
   .item {
+    --h: calc(28 * var(--dpx));
     flex: 0 0 auto;
     min-width: unset;
     opacity: 1;
     transform: none;
     animation: none;
-    height: calc(28 * var(--dpx));
     margin-inline: var(--margin-lg);
-  }
-
-  .item img {
-    width: auto;
-    height: 100%;
-    max-width: none;
-    max-height: none;
   }
 
   .track {

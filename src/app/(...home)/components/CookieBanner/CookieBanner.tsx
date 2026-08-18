@@ -48,8 +48,13 @@ export function CookieBanner() {
           <p className={styles.text}>
             Мы используем файлы cookie, чтобы сделать наш сайт лучше. Используя
             сайт, вы принимаете нашу{" "}
-            <Link href="/#">политику конфиденциальности</Link> и{" "}
-            <Link href="/#">соглашение на обработку персональных данных</Link>.
+            <Link href="/#" className={styles.strong}>
+              политику конфиденциальности
+            </Link>{" "}
+            и{" "}
+            <Link href="/#" className={styles.strong}>
+              соглашение на обработку персональных данных
+            </Link>.
           </p>
           <div className={styles.actions}>
             <Button size="sm" className={styles.button} onClick={accept}>

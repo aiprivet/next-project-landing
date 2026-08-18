@@ -25,9 +25,17 @@
 }
 
 .text a {
-  color: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.text .strong {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text .strong:hover {
+  opacity: 0.7;
 }
 
 .actions {
