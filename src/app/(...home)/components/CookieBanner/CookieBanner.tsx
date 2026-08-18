@@ -51,14 +51,11 @@ export function CookieBanner() {
             <Link href="/#">политику конфиденциальности</Link> и{" "}
             <Link href="/#">соглашение на обработку персональных данных</Link>.
           </p>
-          <Button
-            size="sm"
-            radius="pill"
-            className={styles.button}
-            onClick={accept}
-          >
-            {cookie.accept}
-          </Button>
+          <div className={styles.actions}>
+            <Button size="sm" className={styles.button} onClick={accept}>
+              {cookie.accept}
+            </Button>
+          </div>
         </motion.aside>
       ) : null}
     </AnimatePresence>

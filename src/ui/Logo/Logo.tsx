@@ -1,3 +1,4 @@
+import { BASE_PATH } from "@/lib/constants";
 import { cx } from "@/lib/cx";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ type LogoProps = {
 export function Logo({ className, href = "/" }: LogoProps) {
   const mark = (
     <Image
-      src="/images/logo.svg"
+      src={`${BASE_PATH}/images/logo.svg`}
       alt="Cнэпбилд"
       width={153}
       height={22}

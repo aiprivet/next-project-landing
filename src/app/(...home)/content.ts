@@ -1,23 +1,25 @@
+import { BASE_PATH } from "@/lib/constants";
+
 export const hero = {
   title: "Платформа, где все создается в рамках вашего бренда и дизайн-системы",
   subtitle:
     "Подключите дизайн-систему к Cнэпбилду, чтобы каждый участник команды мог создавать профессиональные материалы в фирменном стиле за минуты, а не дни.",
   cta: "Начать сейчас",
-  image: "/images/hero.webp",
+  image: `${BASE_PATH}/images/hero.webp`,
 };
 
 export const logos = {
   eyebrow: "С платформой работают команды, для которых бренд — закон",
   items: [
-    { src: "/images/logos/partner-1.svg", alt: "Яндекс" },
-    { src: "/images/logos/partner-2.svg", alt: "Т-Банк" },
-    { src: "/images/logos/avito.svg", alt: "Авито" },
-    { src: "/images/logos/cian.svg", alt: "Циан" },
-    { src: "/images/logos/lenta.svg", alt: "Лента" },
+    { src: `${BASE_PATH}/images/logos/partner-1.svg`, alt: "Яндекс" },
+    { src: `${BASE_PATH}/images/logos/partner-2.svg`, alt: "Т-Банк" },
+    { src: `${BASE_PATH}/images/logos/avito.svg`, alt: "Авито" },
+    { src: `${BASE_PATH}/images/logos/cian.svg`, alt: "Циан" },
+    { src: `${BASE_PATH}/images/logos/lenta.svg`, alt: "Лента" },
   ],
 };
 
-export const process = {
+export const processSection = {
   title: "Одна платформа — весь маркетинг",
   titleMobile: "Одна платформа —\nвесь маркетинг",
   subtitle:
@@ -28,21 +30,21 @@ export const process = {
       titleMobile: "Дизайн-система Cнэпбилд",
       description:
         "Ваши компоненты, цвета и шрифты — единственный источник стиля",
-      image: "/images/process/design-system.webp",
+      image: `${BASE_PATH}/images/process/design-system.webp`,
     },
     {
       title: "Гибкая конфигурация",
       description:
         "Правила бренда задаются один раз — работают в каждой генерации",
-      image: "/images/process/flexible.webp",
-      imageTablet: "/images/process/flexible-tablet.webp",
-      imageMobile: "/images/process/flexible-mobile.webp",
+      image: `${BASE_PATH}/images/process/flexible.webp`,
+      imageTablet: `${BASE_PATH}/images/process/flexible-tablet.webp`,
+      imageMobile: `${BASE_PATH}/images/process/flexible-mobile.webp`,
     },
     {
       title: "Соответствие по умолчанию",
       description:
         "AI не может нарушить бренд: сайты, изображения, видео, баннеры и презентации — строго по вашим правилам",
-      image: "/images/process/compliance.webp",
+      image: `${BASE_PATH}/images/process/compliance.webp`,
     },
   ],
 };
@@ -59,24 +61,24 @@ export const useCases = {
           title: "Результат за один запрос",
           description:
             "Отправляйте документ или ссылку на описание продукта — платформа собирает структуру",
-          image: "/images/use-cases/sites-1.webp",
+          image: `${BASE_PATH}/images/use-cases/sites-1.webp`,
         },
         {
           title: "Страница за минуту",
           description:
             "В вашей дизайн-системе, с вашими шрифтами, сеткой и компонентами",
-          image: "/images/use-cases/sites-2.webp",
+          image: `${BASE_PATH}/images/use-cases/sites-2.webp`,
         },
         {
           title: "AI или визуальный редактор",
           description: "Меняйте контент через чат или редактируйте вручную",
-          image: "/images/use-cases/sites-3.webp",
+          image: `${BASE_PATH}/images/use-cases/sites-3.webp`,
         },
         {
           title: "Адаптация под ЦА за один клик",
           description:
             "Версия сайта под новый сегмент без работы дизайнеров и копирайтеров",
-          image: "/images/use-cases/sites-4.webp",
+          image: `${BASE_PATH}/images/use-cases/sites-4.webp`,
         },
       ],
     },
@@ -88,24 +90,24 @@ export const useCases = {
           title: "В стиле и цвете бренда",
           description:
             "Изображения по композиционным правилам вашей дизайн-системы",
-          image: "/images/use-cases/images-1.webp",
+          image: `${BASE_PATH}/images/use-cases/images-1.webp`,
         },
         {
           title: "Попадание с первой генерации",
           description: "Без часов промптинга и поиска на стоках",
-          image: "/images/use-cases/images-2.webp",
+          image: `${BASE_PATH}/images/use-cases/images-2.webp`,
         },
         {
           title: "Редактирование объектов",
           description:
             "Меняйте композицию и удаляйте элементы прямо на изображении",
-          image: "/images/use-cases/images-3.webp",
+          image: `${BASE_PATH}/images/use-cases/images-3.webp`,
         },
         {
           title: "Любой стиль и формат",
           description:
             "Портреты, иллюстрации, обложки — в нужном соотношении, до 4K",
-          image: "/images/use-cases/images-4.webp",
+          image: `${BASE_PATH}/images/use-cases/images-4.webp`,
         },
       ],
     },
@@ -116,23 +118,23 @@ export const useCases = {
         {
           title: "Изображения как ключевые кадры",
           description: "Используйте графику из модуля изображений напрямую",
-          image: "/images/use-cases/video-1.webp",
+          image: `${BASE_PATH}/images/use-cases/video-1.webp`,
         },
         {
           title: "Контроль качества и формата",
           description: "Длительность, соотношение, качество — под площадку",
-          image: "/images/use-cases/video-2.webp",
+          image: `${BASE_PATH}/images/use-cases/video-2.webp`,
         },
         {
           title: "Сохранение стиля и композиции",
           description: "AI удерживает визуальную целостность ролика",
-          image: "/images/use-cases/video-3.webp",
+          image: `${BASE_PATH}/images/use-cases/video-3.webp`,
         },
         {
           title: "Один сценарий — десятки адаптаций",
           description:
             "Версии под популярные форматы соцсетей и рекламные площадки",
-          image: "/images/use-cases/video-4.webp",
+          image: `${BASE_PATH}/images/use-cases/video-4.webp`,
         },
       ],
     },
@@ -143,24 +145,24 @@ export const useCases = {
         {
           title: "Креативы из одной идеи",
           description: "Готовые баннеры в фирменном стиле для любой кампании",
-          image: "/images/use-cases/banners-1.webp",
+          image: `${BASE_PATH}/images/use-cases/banners-1.webp`,
         },
         {
           title: "Все размеры автоматически",
           description:
             "Выбирайте готовые размеры для популярных площадок или задавайте собственные — без ручной пересборки",
-          image: "/images/use-cases/banners-2.webp",
+          image: `${BASE_PATH}/images/use-cases/banners-2.webp`,
         },
         {
           title: "Текст и графика под контролем",
           description: "Редактируйте оффер, композицию и визуальные акценты",
-          image: "/images/use-cases/banners-3.webp",
+          image: `${BASE_PATH}/images/use-cases/banners-3.webp`,
         },
         {
           title: "Экспорт под площадку",
           description:
             "Форматы и вес файлов соответствуют требованиям размещения",
-          image: "/images/use-cases/banners-4.webp",
+          image: `${BASE_PATH}/images/use-cases/banners-4.webp`,
         },
       ],
     },
@@ -171,23 +173,23 @@ export const useCases = {
         {
           title: "Презентация из запроса",
           description: "Платформа собирает структуру и черновик слайдов",
-          image: "/images/use-cases/presentations-1.jpg",
+          image: `${BASE_PATH}/images/use-cases/presentations-1.jpg`,
         },
         {
           title: "В вашей дизайн-системе",
           description: "Шрифты, сетки и компоненты применяются автоматически",
-          image: "/images/use-cases/presentations-2.webp",
+          image: `${BASE_PATH}/images/use-cases/presentations-2.webp`,
         },
         {
           title: "Редактирование через AI",
           description: "Меняйте отдельный слайд или всю историю через чат",
-          image: "/images/use-cases/presentations-3.webp",
+          image: `${BASE_PATH}/images/use-cases/presentations-3.webp`,
         },
         {
           title: "Экспорт в нужном формате",
           description:
             "Собирайте презентации для встречи, рассылки или публикации",
-          image: "/images/use-cases/presentations-4.webp",
+          image: `${BASE_PATH}/images/use-cases/presentations-4.webp`,
         },
       ],
     },
@@ -245,22 +247,22 @@ export const security = {
       title: "Только одобренные модели",
       description:
         "Работаем только с российскими и локализованными моделями, без экспортных ограничений",
-      image: "/images/security/models.webp",
-      imageMobile: "/images/security/models.jpg",
+      image: `${BASE_PATH}/images/security/models.webp`,
+      imageMobile: `${BASE_PATH}/images/security/models.jpg`,
     },
     {
       title: "Ваш контур, ваша юрисдикция",
       description:
         "Развертывание в частном облаке с полным соответствием 152-ФЗ и внутренними ИБ-требованиями",
-      image: "/images/security/cloud.webp",
-      imageMobile: "/images/security/cloud.jpg",
+      image: `${BASE_PATH}/images/security/cloud.webp`,
+      imageMobile: `${BASE_PATH}/images/security/cloud.jpg`,
     },
     {
       title: "Собственный AI-стек",
       description:
         "Вы сами определяете модели, хранилища, доступы и цепочки валидации",
-      image: "/images/security/stack.webp",
-      imageMobile: "/images/security/stack.jpg",
+      image: `${BASE_PATH}/images/security/stack.webp`,
+      imageMobile: `${BASE_PATH}/images/security/stack.jpg`,
     },
   ],
 };

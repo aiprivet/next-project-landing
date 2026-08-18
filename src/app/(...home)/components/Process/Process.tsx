@@ -2,7 +2,7 @@
 
 import { Card, Heading, Reveal, Section, Text } from "@/ui";
 import Image from "next/image";
-import { process as content } from "../../content";
+import { processSection as content } from "../../content";
 import styles from "./Process.module.scss";
 
 export function Process() {

@@ -1,3 +1,5 @@
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const APP_URL = "#";
 export const TELEGRAM_URL = "https://t.me/#";
 export const EMAIL = "hey@snаpbuild.ru";

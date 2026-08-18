@@ -1,6 +1,6 @@
 "use client";
 
-import { APP_URL } from "@/lib/constants";
+import { APP_URL, BASE_PATH } from "@/lib/constants";
 import { cx } from "@/lib/cx";
 import { Badge, Button, Heading, Reveal, Section, Switch, Text } from "@/ui";
 import { AnimatePresence, motion } from "motion/react";
@@ -59,7 +59,7 @@ export function Plans() {
                   {card.features.map((feature) => (
                     <li key={feature} className={styles.feature}>
                       <Image
-                        src="/images/ui/check.svg"
+                        src={`${BASE_PATH}/images/ui/check.svg`}
                         alt=""
                         width={16}
                         height={16}
