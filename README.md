@@ -10,7 +10,7 @@
 ---
 
 ## 2. Ссылка на опубликованную страницу
-
+https://aiprivet.github.io/next-project-landing/
 
 ---
 
